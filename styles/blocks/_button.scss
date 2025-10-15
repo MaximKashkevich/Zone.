@@ -1,0 +1,15 @@
+.button {
+  @include reser-button;
+  @include fluid-text(12, 14);
+
+  color: #f9fafb;
+  background: linear-gradient(90.35deg, #2563eb 0.36%, #d946ef 201.02%);
+  height: 42px;
+  padding: 12px 24px;
+  border-radius: 5px;
+  transition: transform var(--transition-duration) ease;
+
+  @include hover {
+    transform: translateY(-2px);
+  }
+}
