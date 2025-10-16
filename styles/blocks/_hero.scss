@@ -10,14 +10,14 @@
   }
 
   &__title {
-    @include fluid-text(100, 50);
+    @include fluid-text(40, 45);
     @include gradient-text;
     font-weight: 700;
     line-height: 2;
   }
 
   &__description {
-    @include fluid-text(18, 15);
+    @include fluid-text(14, 12);
     font-weight: 500;
     color: #e5e7eb;
     line-height: 1.6;

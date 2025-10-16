@@ -1,33 +1,12 @@
+html {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+html::-webkit-scrollbar {
+  display: none;
+}
+
 body {
-  font-family: var(--font-family-base);
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 1.28;
-  color: var(--light);
-  background: #111827;
-}
-
-a,
-button,
-input,
-textarea,
-svg * {
-  transition-duration: var(--transition-duration);
-}
-
-a {
-  text-decoration: none;
-  color: inherit;
-}
-
-h1 {
-  @include fluid-text(60, 43);
-}
-
-h2 {
-  @include fluid-text(40, 36);
-}
-
-h3 {
-  @include fluid-text(30, 26);
+  background-color: #111827;
 }

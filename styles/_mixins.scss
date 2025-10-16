@@ -1,12 +1,14 @@
-@mixin fluid-text($max-value, $min-value, $max-vw: 1920px, $min-vw: 320px) {
-  font-size: clamp(
-    #{$min-value}px,
-    calc(
-      #{$min-value}px + (#{$max-value} - #{$min-value}) *
-        ((100vw - #{$min-vw}) / (#{$max-vw} - #{$min-vw}))
-    ),
-    #{$max-value}px
-  );
+@mixin fluid-text($min-value, $max-value, $min-vw: 320, $max-vw: 1400) {
+  & {
+    font-size: clamp(
+      #{$min-value}px,
+      calc(
+        #{$min-value}px + (#{$max-value} - #{$min-value}) *
+          ((100vw - #{$min-vw}px) / (#{$max-vw} - #{$min-vw}))
+      ),
+      #{$max-value}px
+    );
+  }
 }
 
 @mixin reset-link {

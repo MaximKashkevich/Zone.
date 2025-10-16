@@ -1,0 +1,163 @@
+.services {
+  padding-top: var(--section-padding-y);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  font-family: var(--font-family-base);
+
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    backdrop-filter: blur(350px);
+    -webkit-backdrop-filter: blur(350px);
+    z-index: -1;
+    pointer-events: none;
+  }
+
+  &__title {
+    @include fluid-text(40, 42);
+    @include gradient-text;
+
+    font-weight: 700;
+  }
+
+  &__subtitle {
+    @include fluid-text(14, 16);
+
+    color: var(--color-light);
+    font-weight: 500;
+    max-width: 587px;
+    text-align: center;
+    margin-top: 10px;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    padding-top: 30px;
+  }
+
+  &__card {
+    @include hover {
+      transform: translateY(-2px);
+    }
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 20px;
+    box-shadow: 0px 22px 18px 0px #0000000d;
+    padding: 30px;
+    border-radius: var(--rounded-xl);
+    position: relative;
+    background: rgba(255, 255, 255, 0.05);
+    transition: transform var(--transition-duration) ease;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      border-radius: var(--rounded-xl);
+      padding: 1px;
+      background: linear-gradient(
+        97.12deg,
+        rgba(255, 255, 255, 0.08) -3.52%,
+        rgba(255, 255, 255, 0.07) 100.35%
+      );
+      -webkit-mask: linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+    }
+
+    &-circle {
+      padding: 20px;
+      border-radius: 50%;
+    }
+
+    &:nth-of-type(1) &-circle {
+      background: linear-gradient(180deg, #8a7fd9 0%, #402f8f 100%);
+    }
+
+    &:nth-of-type(2) &-circle {
+      background: linear-gradient(180deg, #d97f95 0%, #923250 100%);
+    }
+
+    &:nth-of-type(3) &-circle {
+      background: linear-gradient(180deg, #84d8ed 0%, #4292bb 100%);
+    }
+
+    &:nth-of-type(4) &-circle {
+      background: linear-gradient(180deg, #92efc3 0%, #2f8f5b 100%);
+    }
+
+    &:nth-of-type(5) &-circle {
+      background: linear-gradient(180deg, #bc7fd9 0%, #923283 100%);
+    }
+
+    &:nth-of-type(6) &-circle {
+      background: linear-gradient(180deg, #8684ed 0%, #4247bb 100%);
+    }
+
+    // Убираем нижний внутренний отступ у 4-й и 5-й карточек
+    &:nth-of-type(4),
+    &:nth-of-type(5) {
+      padding-bottom: 0;
+    }
+
+    &-title {
+      @include fluid-text(20, 24);
+
+      font-weight: 700;
+      color: var(--color-light);
+      text-align: center;
+    }
+
+    &-description {
+      @include fluid-text(14, 16);
+
+      color: var(--color-light);
+      font-weight: 500;
+      max-width: 587px;
+      text-align: center;
+    }
+
+    &-link {
+      @include reset-link;
+
+      display: flex;
+      align-items: center;
+      column-gap: 10px;
+      color: var(--color-light);
+    }
+  }
+
+  @include desktop {
+    &__grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 30px;
+      padding-top: 30px;
+    }
+  }
+
+  @include tablet {
+    &__grid {
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+      gap: 20px;
+      padding-top: 30px;
+    }
+  }
+}
