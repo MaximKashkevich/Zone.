@@ -1,0 +1,163 @@
+.footer {
+  @include fluid-text(14, 18);
+
+  padding-top: var(--section-padding-y);
+  color: #ffffffcc;
+  font-weight: 500;
+
+  a {
+    @include reset-link;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    column-gap: 30px;
+    justify-items: start; // ← Выравнивание элементов по левому краю
+
+    @include desktop {
+      grid-template-columns: repeat(4, 1fr);
+      row-gap: 20px;
+      justify-items: center; // ← Центрируем на desktop
+    }
+
+    @include tablet {
+      grid-template-columns: repeat(2, 1fr);
+      row-gap: 20px;
+      justify-items: center; // ← Центрируем на tablet
+    }
+
+    @include mobile {
+      grid-template-columns: 1fr; // ← Можно и repeat(1, 1fr)
+      row-gap: 20px;
+      justify-items: center; // ← Центрируем на mobile
+      text-align: center; // ← Центрируем текст внутри
+    }
+  }
+
+  &__card {
+    display: flex;
+    flex-direction: column;
+    row-gap: 15px;
+
+    // Центрируем содержимое карточек на мобильных
+    @include mobile {
+      align-items: center;
+    }
+  }
+
+  &__href {
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+
+    // Центрируем ссылки на мобильных
+    @include mobile {
+      justify-content: center;
+    }
+  }
+
+  &__grid-messangers {
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    column-gap: 10px;
+
+    // Центрируем мессенджеры на мобильных
+    @include mobile {
+      justify-content: center;
+    }
+  }
+
+  &__messanger {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0px 22px 18px 0px #0000000d;
+    padding: 10px 13px;
+    border-radius: var(--rounded-xl);
+    position: relative;
+    background: rgba(255, 255, 255, 0.05);
+    transition: transform var(--transition-duration) ease;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      border-radius: var(--rounded-xl);
+      padding: 1px;
+      background: linear-gradient(
+        97.12deg,
+        rgba(255, 255, 255, 0.08) -3.52%,
+        rgba(255, 255, 255, 0.07) 100.35%
+      );
+      -webkit-mask: linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+    }
+  }
+
+  &__line {
+    margin: 30px 0;
+    height: 1px;
+    background: #969696;
+    width: 100%;
+    border: none;
+  }
+
+  &__bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 30px;
+
+    // Адаптивность для нижней части
+    @include tablet {
+      flex-direction: column;
+      gap: 20px;
+      text-align: center;
+    }
+  }
+
+  &__block-text {
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+
+    // Адаптивность для текстовых ссылок
+    @include mobile {
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+    }
+  }
+
+  &-text {
+    @include hover {
+      &::after {
+        width: 100%;
+      }
+    }
+
+    position: relative;
+    cursor: pointer;
+    width: fit-content;
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 0%;
+      height: 2px;
+      transition: 0.5s;
+      background-color: var(--color-light);
+    }
+  }
+}

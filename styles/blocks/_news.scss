@@ -1,0 +1,167 @@
+.news {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  padding: 60px 40px;
+  border-radius: var(--rounded-xl);
+  position: relative;
+  background: rgba(255, 255, 255, 0.05);
+  text-align: center;
+  margin-top: var(--section-padding-y);
+
+  // Градиентная граница
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: var(--rounded-xl);
+    padding: 1px;
+    background: linear-gradient(
+      97.12deg,
+      rgba(255, 255, 255, 0.08) -3.52%,
+      rgba(255, 255, 255, 0.07) 100.35%
+    );
+    -webkit-mask: linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+
+  &__title {
+    @include fluid-text(32, 40);
+    @include gradient-text;
+    font-weight: 700;
+    margin: 0;
+  }
+
+  &__description {
+    @include fluid-text(16, 18);
+    color: var(--color-light);
+    font-weight: 500;
+    max-width: 500px;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  &__form {
+    width: 100%;
+    max-width: 1000px;
+  }
+
+  &__input-block {
+    display: flex;
+    align-items: stretch;
+    gap: 12px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50px;
+    padding: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+
+    &:focus-within {
+      border-color: rgba(255, 255, 255, 0.4);
+      background: rgba(255, 255, 255, 0.15);
+    }
+  }
+
+  &__input {
+    flex: 1;
+    padding: 26px 36px;
+    background: transparent;
+    border: none;
+    color: var(--color-light);
+    font-size: 16px;
+    outline: none;
+    height: 100%; // ← Занимает всю высоту родителя
+
+    &::placeholder {
+      color: var(--color-light);
+      font-size: 18px;
+    }
+
+    // Убираем стандартные стили браузера
+    &:-webkit-autofill {
+      -webkit-text-fill-color: var(--color-light);
+      -webkit-box-shadow: 0 0 0px 1000px transparent inset;
+      transition: background-color 5000s ease-in-out 0s;
+    }
+  }
+
+  &__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 5px 5px 0 0;
+    gap: 8px;
+    padding: 26px 36px; // ← Синхронизируем с инпутом
+    background: linear-gradient(97.12deg, #2563eb 0%, #d946ef 100%);
+    border: none;
+    border-radius: 50px;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    height: auto;
+    max-height: 60px;
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(37, 99, 235, 0.3);
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+
+    svg {
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  // Адаптивность
+  @include tablet {
+    padding: 40px 20px;
+    gap: 20px;
+
+    &__input-block {
+      flex-direction: column;
+      gap: 12px;
+      border-radius: 25px;
+    }
+
+    &__input {
+      padding: 20px 24px;
+      border-radius: 25px;
+      text-align: center;
+    }
+
+    &__button {
+      padding: 20px 24px;
+      border-radius: 25px;
+      min-height: 56px;
+    }
+  }
+
+  @include mobile {
+    &__input {
+      padding: 18px 20px;
+      font-size: 16px;
+
+      &::placeholder {
+        font-size: 16px;
+      }
+    }
+
+    &__button {
+      padding: 18px 20px;
+      min-height: 52px;
+    }
+  }
+}

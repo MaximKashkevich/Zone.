@@ -1,0 +1,102 @@
+.team {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  font-family: var(--font-family-base);
+
+  padding-top: var(--section-padding-y);
+
+  &-title {
+    @include fluid-text(40, 42);
+    @include gradient-text;
+
+    font-weight: 700;
+  }
+
+  &-description {
+    @include fluid-text(14, 16);
+
+    color: var(--color-light);
+    font-weight: 500;
+    max-width: 587px;
+    text-align: center;
+    margin-top: 10px;
+  }
+
+  &-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    align-items: center;
+    column-gap: 20px;
+    margin-top: 20px;
+
+    @include desktop {
+      grid-template-columns: repeat(2, 1fr);
+      row-gap: 20px;
+    }
+
+    @include tablet {
+      grid-template-columns: repeat(1, 1fr);
+      row-gap: 20px;
+    }
+  }
+
+  &-card {
+    @include hover {
+      transform: translateY(-2px);
+    }
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    box-shadow: 0px 22px 18px 0px #0000000d;
+    padding: 10px;
+    border-radius: var(--rounded-xl);
+    position: relative;
+    background: rgba(255, 255, 255, 0.05);
+    transition: transform var(--transition-duration) ease;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      border-radius: var(--rounded-xl);
+      padding: 1px;
+      background: linear-gradient(
+        97.12deg,
+        rgba(255, 255, 255, 0.08) -3.52%,
+        rgba(255, 255, 255, 0.07) 100.35%
+      );
+      -webkit-mask: linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+    }
+  }
+
+  &-card-grid-socials {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    column-gap: 10px;
+    margin-top: 10px;
+  }
+
+  &-card-name {
+    @include fluid-text(20, 28);
+
+    color: var((--color-light));
+  }
+
+  &-card-profession {
+    @include fluid-text(14, 16);
+
+    color: var((--color-light));
+    font-weight: 400;
+  }
+}
